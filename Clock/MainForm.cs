@@ -23,5 +23,15 @@ namespace Clock
             if (cbShowDate.Checked) labelTime.Text += $"\n{DateTime.Now.ToString("yyyy.MM.dd")}";
             if (cbShowWeekday.Checked) labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
         }
+
+        private void btnHideControls_Click(object sender, EventArgs e)
+        {
+            cbShowDate.Visible = false;
+            cbShowWeekday.Visible = false;
+            btnHideControls.Visible = false;
+            this.ShowInTaskbar = false;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.TransparencyKey = this.BackColor;
+        }
     }
 }

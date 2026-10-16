@@ -39,6 +39,7 @@
             // labelTime
             // 
             this.labelTime.AutoSize = true;
+            this.labelTime.BackColor = System.Drawing.SystemColors.Highlight;
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelTime.Location = new System.Drawing.Point(13, 13);
             this.labelTime.Name = "labelTime";
@@ -82,6 +83,7 @@
             this.btnHideControls.TabIndex = 3;
             this.btnHideControls.Text = "Hide controls";
             this.btnHideControls.UseVisualStyleBackColor = true;
+            this.btnHideControls.Click += new System.EventHandler(this.btnHideControls_Click);
             // 
             // MainForm
             // 
