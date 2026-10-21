@@ -57,9 +57,15 @@ namespace Clock
 
         private void cbShowWeekday_CheckedChanged(object sender, EventArgs e) => tsmiShowWeekday.Checked = cbShowWeekday.Checked;
 
-        private void tsmiExit_Click(object sender, EventArgs e)
+        private void tsmiExit_Click(object sender, EventArgs e) => this.Close();
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
-           Application.Exit();
+            if(this.TopMost == false)
+            {
+                this.TopMost = true;
+                this.TopMost = false;
+            }
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.labelTime = new System.Windows.Forms.Label();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiTopmost = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +50,7 @@
             this.cbShowDate = new System.Windows.Forms.CheckBox();
             this.cbShowWeekday = new System.Windows.Forms.CheckBox();
             this.btnHideControls = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +60,7 @@
             this.labelTime.BackColor = System.Drawing.SystemColors.Highlight;
             this.labelTime.ContextMenuStrip = this.contextMenu;
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTime.Location = new System.Drawing.Point(13, 13);
+            this.labelTime.Location = new System.Drawing.Point(12, 18);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(193, 37);
             this.labelTime.TabIndex = 0;
@@ -81,13 +83,13 @@
             this.toolStripSeparator4,
             this.tsmiExit});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(181, 226);
+            this.contextMenu.Size = new System.Drawing.Size(153, 204);
             // 
             // tsmiTopmost
             // 
             this.tsmiTopmost.CheckOnClick = true;
             this.tsmiTopmost.Name = "tsmiTopmost";
-            this.tsmiTopmost.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTopmost.Size = new System.Drawing.Size(152, 22);
             this.tsmiTopmost.Text = "Topmost";
             this.tsmiTopmost.CheckedChanged += new System.EventHandler(this.tsmiTopmost_CheckedChanged);
             // 
@@ -95,25 +97,25 @@
             // 
             this.tsmiShowControls.CheckOnClick = true;
             this.tsmiShowControls.Name = "tsmiShowControls";
-            this.tsmiShowControls.Size = new System.Drawing.Size(180, 22);
+            this.tsmiShowControls.Size = new System.Drawing.Size(152, 22);
             this.tsmiShowControls.Text = "Show controls";
             this.tsmiShowControls.CheckedChanged += new System.EventHandler(this.tsmiShowControls_CheckedChanged);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // tsmiShowDate
             // 
             this.tsmiShowDate.CheckOnClick = true;
             this.tsmiShowDate.Name = "tsmiShowDate";
-            this.tsmiShowDate.Size = new System.Drawing.Size(180, 22);
+            this.tsmiShowDate.Size = new System.Drawing.Size(152, 22);
             this.tsmiShowDate.Text = "Show date";
             this.tsmiShowDate.CheckedChanged += new System.EventHandler(this.tsmiShowDate_CheckedChanged);
             // 
@@ -121,19 +123,19 @@
             // 
             this.tsmiShowWeekday.CheckOnClick = true;
             this.tsmiShowWeekday.Name = "tsmiShowWeekday";
-            this.tsmiShowWeekday.Size = new System.Drawing.Size(180, 22);
+            this.tsmiShowWeekday.Size = new System.Drawing.Size(152, 22);
             this.tsmiShowWeekday.Text = "Show weekday";
             this.tsmiShowWeekday.CheckedChanged += new System.EventHandler(this.tsmiShowWeekday_CheckedChanged);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // tsmiFont
             // 
             this.tsmiFont.Name = "tsmiFont";
-            this.tsmiFont.Size = new System.Drawing.Size(180, 22);
+            this.tsmiFont.Size = new System.Drawing.Size(152, 22);
             this.tsmiFont.Text = "Font";
             // 
             // tsmiColor
@@ -142,7 +144,7 @@
             this.tsmiBackgroundColor,
             this.tsmiforegroundColor});
             this.tsmiColor.Name = "tsmiColor";
-            this.tsmiColor.Size = new System.Drawing.Size(180, 22);
+            this.tsmiColor.Size = new System.Drawing.Size(152, 22);
             this.tsmiColor.Text = "Color";
             // 
             // tsmiBackgroundColor
@@ -160,18 +162,18 @@
             // tsmiAutorun
             // 
             this.tsmiAutorun.Name = "tsmiAutorun";
-            this.tsmiAutorun.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAutorun.Size = new System.Drawing.Size(152, 22);
             this.tsmiAutorun.Text = "Autorun";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(152, 22);
             this.tsmiExit.Text = "Exit";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -215,6 +217,14 @@
             this.btnHideControls.UseVisualStyleBackColor = true;
             this.btnHideControls.Click += new System.EventHandler(this.btnHideControls_Click);
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.ContextMenuStrip = this.contextMenu;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "notifyIcon";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,6 +235,7 @@
             this.Controls.Add(this.cbShowDate);
             this.Controls.Add(this.labelTime);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Clock P_418";
@@ -256,6 +267,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiAutorun;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 
