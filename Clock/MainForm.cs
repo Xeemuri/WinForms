@@ -16,10 +16,12 @@ namespace Clock
         {
             InitializeComponent();
 
-            //this.Location = new Point
-            //    (
-
-            //    )
+            this.Location = new Point
+             (
+                 Screen.PrimaryScreen.Bounds.Right - this.Width - 50,
+                 Screen.PrimaryScreen.Bounds.Bottom / 20
+             );
+            SetVisibility(false);
         }
 
         //          Methods:
@@ -54,5 +56,10 @@ namespace Clock
         private void cbShowDate_CheckedChanged(object sender, EventArgs e) => tsmiShowDate.Checked = cbShowDate.Checked;
 
         private void cbShowWeekday_CheckedChanged(object sender, EventArgs e) => tsmiShowWeekday.Checked = cbShowWeekday.Checked;
+
+        private void tsmiExit_Click(object sender, EventArgs e)
+        {
+           Application.Exit();
+        }
     }
 }

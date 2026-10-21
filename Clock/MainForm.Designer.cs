@@ -81,7 +81,7 @@
             this.toolStripSeparator4,
             this.tsmiExit});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(153, 204);
+            this.contextMenu.Size = new System.Drawing.Size(181, 226);
             // 
             // tsmiTopmost
             // 
@@ -173,6 +173,7 @@
             this.tsmiExit.Name = "tsmiExit";
             this.tsmiExit.Size = new System.Drawing.Size(180, 22);
             this.tsmiExit.Text = "Exit";
+            this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
             // timer
             // 
