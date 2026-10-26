@@ -22,7 +22,7 @@ namespace Clock
             AllocConsole();
             backgroundColorDialog = new ColorDialog();
             foregroundColorDialog = new ColorDialog();
-            fontDialog = new FontDialog();
+            fontDialog = new FontDialog(this);
 
             this.Location = new Point
              (
@@ -96,7 +96,8 @@ namespace Clock
 
         private void tsmiFont_Click(object sender, EventArgs e)
         {
-            if (fontDialog.ShowDialog() == DialogResult.OK) ;
+            if (fontDialog.ShowDialog() == DialogResult.OK)
+                labelTime.Font = fontDialog.Font;
         }
 
         private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e)

@@ -186,7 +186,7 @@
             // 
             this.cbShowDate.AutoSize = true;
             this.cbShowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbShowDate.Location = new System.Drawing.Point(13, 110);
+            this.cbShowDate.Location = new System.Drawing.Point(13, 126);
             this.cbShowDate.Name = "cbShowDate";
             this.cbShowDate.Size = new System.Drawing.Size(132, 29);
             this.cbShowDate.TabIndex = 1;
@@ -198,7 +198,7 @@
             // 
             this.cbShowWeekday.AutoSize = true;
             this.cbShowWeekday.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbShowWeekday.Location = new System.Drawing.Point(12, 145);
+            this.cbShowWeekday.Location = new System.Drawing.Point(13, 161);
             this.cbShowWeekday.Name = "cbShowWeekday";
             this.cbShowWeekday.Size = new System.Drawing.Size(175, 29);
             this.cbShowWeekday.TabIndex = 2;
@@ -209,7 +209,7 @@
             // btnHideControls
             // 
             this.btnHideControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnHideControls.Location = new System.Drawing.Point(12, 180);
+            this.btnHideControls.Location = new System.Drawing.Point(12, 196);
             this.btnHideControls.Name = "btnHideControls";
             this.btnHideControls.Size = new System.Drawing.Size(235, 55);
             this.btnHideControls.TabIndex = 3;
@@ -246,6 +246,7 @@
             this.Controls.Add(this.cbShowWeekday);
             this.Controls.Add(this.cbShowDate);
             this.Controls.Add(this.labelTime);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
