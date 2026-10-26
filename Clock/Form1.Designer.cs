@@ -43,6 +43,7 @@
             this.comboBoxFont.Name = "comboBoxFont";
             this.comboBoxFont.Size = new System.Drawing.Size(351, 21);
             this.comboBoxFont.TabIndex = 0;
+            this.comboBoxFont.SelectionChangeCommitted += new System.EventHandler(this.comboBoxFont_SelectionChangeCommitted);
             // 
             // counterfontSize
             // 
@@ -50,6 +51,12 @@
             this.counterfontSize.Name = "counterfontSize";
             this.counterfontSize.Size = new System.Drawing.Size(120, 20);
             this.counterfontSize.TabIndex = 1;
+            this.counterfontSize.Value = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            this.counterfontSize.ValueChanged += new System.EventHandler(this.counterfontSize_ValueChanged);
             // 
             // labelExample
             // 
