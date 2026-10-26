@@ -27,7 +27,7 @@ namespace Clock
             this.Location = new Point
              (
                  Screen.PrimaryScreen.Bounds.Right - this.Width - 50,
-                 Screen.PrimaryScreen.Bounds.Bottom / 20
+                 Screen.PrimaryScreen.Bounds.Top / 20
              );
             SetVisibility(false);
         }

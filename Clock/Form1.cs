@@ -16,6 +16,7 @@ namespace Clock
     public partial class FontDialog : Form
     {
         public Font Font {  get; set; }
+        Form parentWindow;
         public FontDialog()
         {
             InitializeComponent();
@@ -32,14 +33,18 @@ namespace Clock
 
         public FontDialog(Form parentWindow): this()
         {
+            this.parentWindow = parentWindow;
             this.StartPosition = FormStartPosition.Manual;
+        }
+        private void FontDialog_Load(object sender, EventArgs e)
+        {
             this.Location = new Point
                 (
                     parentWindow.Location.X - this.Width / 4,
                     parentWindow.Location.Y + 128
                 );
-        }
 
+        }
         void LoadFonts(string pattern)
         {
             string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), pattern);
