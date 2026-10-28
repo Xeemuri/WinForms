@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
 
 namespace Clock
 {
@@ -24,11 +25,12 @@ namespace Clock
             foregroundColorDialog = new ColorDialog();
             fontDialog = new FontDialog(this);
 
+            this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point
              (
-                 Screen.PrimaryScreen.Bounds.Right - this.Width - 50,
-                 Screen.PrimaryScreen.Bounds.Top / 20
-             );
+                Screen.PrimaryScreen.Bounds.Right - this.Width - 50,
+                Screen.PrimaryScreen.Bounds.Bottom / 20
+            );
             SetVisibility(false);
         }
         [DllImport("kernel32.dll")]
@@ -103,6 +105,17 @@ namespace Clock
         private void showConsoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tsmiAutorun_CheckedChanged(object sender, EventArgs e)
+        {
+            string key_name = "Clock_P_418";
+            //256144B (256kB)
+            RegistryKey registryKey =  Registry.CurrentUser
+                .OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true); // true позволяет записывать в открытую ветку
+            if (tsmiAutorun.Checked) registryKey.SetValue(key_name, Application.ExecutablePath);
+            else registryKey.DeleteValue(key_name, false); //false - не бросать исключение (Exception), если запись в реестре не найден
+            registryKey.Dispose();
         }
     }
 }
