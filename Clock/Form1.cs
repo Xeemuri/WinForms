@@ -16,6 +16,7 @@ namespace Clock
     public partial class FontDialog : Form
     {
         public Font Font {  get; set; }
+        public string Filename { get; set; }
         Form parentWindow;
         public FontDialog()
         {
@@ -67,6 +68,7 @@ namespace Clock
         private void buttonOK_Click(object sender, EventArgs e)
         {
             this.Font = labelExample.Font;
+            this.Filename = comboBoxFont.SelectedItem.ToString();
         }
     }
 }

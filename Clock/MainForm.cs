@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
+using System.IO;
+using System.Diagnostics;
 
 namespace Clock
 {
@@ -44,6 +46,34 @@ namespace Clock
             this.ShowInTaskbar = visible;
             this.FormBorderStyle = visible ? FormBorderStyle.FixedToolWindow : FormBorderStyle.None;
             this.TransparencyKey = visible ? Color.Empty : this.BackColor;
+        }
+
+        void SaveSettings()
+        {
+            string filename = "Settings.ini";
+            StreamWriter writer = new StreamWriter(filename);
+            writer.WriteLine(tsmiTopmost.Checked);
+            writer.WriteLine(tsmiShowControls.Checked);
+            writer.WriteLine(tsmiShowDate.Checked);
+            writer.WriteLine(tsmiShowWeekday.Checked);
+            writer.WriteLine(fontDialog.Filename);
+            writer.WriteLine(backgroundColorDialog.Color.ToArgb());
+            writer.WriteLine(foregroundColorDialog.Color.ToArgb());
+            writer.Close();
+            Process.Start("notepad", filename);
+        }
+
+        void LoadSettings()
+        {
+            string filename = "Settings.ini";
+            StreamReader reader = new StreamReader(filename);
+            tsmiTopmost.Checked         = bool.Parse(reader.ReadLine());
+            tsmiShowControls.Checked    = bool.Parse(reader.ReadLine());
+            tsmiShowDate.Checked    = bool.Parse(reader.ReadLine());
+            tsmiShowWeekday.Checked    = bool.Parse(reader.ReadLine());
+
+            reader.Close();
+            Process.Start("notepad", filename);
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -116,6 +146,22 @@ namespace Clock
             if (tsmiAutorun.Checked) registryKey.SetValue(key_name, Application.ExecutablePath);
             else registryKey.DeleteValue(key_name, false); //false - не бросать исключение (Exception), если запись в реестре не найден
             registryKey.Dispose();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //string filename = "Settings.ini";
+            //StreamWriter writer = new StreamWriter(filename);
+            //writer.WriteLine(tsmiTopmost.Checked);
+            //writer.WriteLine(tsmiShowControls.Checked);
+            //writer.WriteLine(tsmiShowDate.Checked);
+            //writer.WriteLine(tsmiShowWeekday.Checked);
+            //writer.WriteLine(fontDialog.Filename);
+            //writer.WriteLine(backgroundColorDialog.Color.ToArgb());
+            //writer.WriteLine(foregroundColorDialog.Color.ToArgb());
+            //writer.Close();
+            //Process.Start("notepad", filename);
+            SaveSettings();
         }
     }
 }
