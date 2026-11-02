@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Clock
+{
+    public partial class Form1 : Form
+    {
+        public Font Font {  get; set; }
+        public string Filename { get; set; }
+        Form parentWindow;
+        public Form1()
+        {
+            InitializeComponent();
+            Console.WriteLine(Directory.GetCurrentDirectory());
+            Console.WriteLine($"{Application.ExecutablePath}");
+            Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..\\Fonts");
+            Console.WriteLine(Directory.GetCurrentDirectory());
+
+            LoadFonts("*otf");
+            LoadFonts("*ttf");
+            comboBoxFont.SelectedIndex = 0;
+
+        }
+
+        public Form1(Form parentWindow): this()
+        {
+            this.parentWindow = parentWindow;
+            this.StartPosition = FormStartPosition.Manual;
+        }
+        private void FontDialog_Load(object sender, EventArgs e)
+        {
+            this.Location = new Point
+                (
+                    parentWindow.Location.X - this.Width / 4,
+                    parentWindow.Location.Y + 128
+                );
+            labelExample.Font = Font;
+            comboBoxFont.SelectedItem = Filename;
+        }
+        void LoadFonts(string pattern)
+        {
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), pattern);
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = files[i].Split('\\').Last();
+            }
+            comboBoxFont.Items.AddRange(files);
+        }
+
+        private void comboBoxFont_SelectionChangeCommitted(object sender, EventArgs e) => ApplyFont();
+        private void counterfontSize_ValueChanged(object sender, EventArgs e) => ApplyFont();
+        void ApplyFont()
+        {
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile(comboBoxFont.SelectedItem.ToString());
+            labelExample.Font = new Font(pfc.Families[0], (int)counterfontSize.Value);
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            this.Font = labelExample.Font;
+            this.Filename = comboBoxFont.SelectedItem.ToString();
+        }
+    }
+}

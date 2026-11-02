@@ -46,6 +46,7 @@ namespace Clock
                 );
             labelExample.Font = Font;
             comboBoxFont.SelectedItem = Filename;
+            counterfontSize.Value = (int)Font.Size;
         }
         void LoadFonts(string pattern)
         {

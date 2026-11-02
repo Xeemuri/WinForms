@@ -60,6 +60,7 @@ namespace Clock
             writer.WriteLine(tsmiShowDate.Checked);
             writer.WriteLine(tsmiShowWeekday.Checked);
             writer.WriteLine(fontDialog.Filename);
+            writer.WriteLine(labelTime.Font.Size);
             writer.WriteLine(labelTime.BackColor.ToArgb());
             writer.WriteLine(labelTime.ForeColor.ToArgb());
             writer.Close();
@@ -78,8 +79,8 @@ namespace Clock
             fontDialog.Filename = reader.ReadLine();
             PrivateFontCollection pfc = new PrivateFontCollection();
             pfc.AddFontFile($"{Application.ExecutablePath}\\..\\..\\..\\Fonts\\{fontDialog.Filename}");
-            fontDialog.Font = labelTime.Font = new Font(pfc.Families[0], 32);
-
+            int fontSize = Convert.ToInt32(reader.ReadLine());
+            fontDialog.Font = labelTime.Font = new Font(pfc.Families[0], fontSize);
             labelTime.BackColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
             labelTime.ForeColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 
